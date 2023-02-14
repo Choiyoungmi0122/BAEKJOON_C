@@ -7,44 +7,55 @@
 
 #include <stdio.h>
 int main(){
-    int num[10000]={0,},k,n,count,sum=0;
-
+    int k=0;
+    int s=0;
     scanf("%d", &k);
     
+    int l = -1,sum=0;
+    int n[k];
     
-    
-    for(int i =0;i<k;i++){
-        scanf("%d", &n);
-            
-        if(n==0){
-            count=i-1;
-            while(num[count]==0)
-                count--;
-            
-            num[count]=0;
-            
-        }
-        else
-            num[i]=n;
-    }
-        
-    for(int i =0;i<k;i++){
-        sum = sum + num[i];
-    }
-    
-    
-//    for(int count =0;count<k;count++){
-//        scanf("%d", &num[count]);
+//    for(int i=0;i<k;i++){
+//        scanf("%d", &s);
 //
-//        if(num[count]!=0)
-//            sum = sum + num[count];
-//        else{
-//            sum = sum - num[i-1];
-//            i=i-2;
+//        if(s==0){
+//            l=i-l;
+//            if(n[l]==0){
+//                l++;
+//            }
+//            n[l]=0;
 //        }
-//        i++;
+//        else{
+//            n[i]=s;
+//            l++;
+//        }
 //    }
-  
+    //선배의 작품
+    for(int i=0; i<k;i++){
+        
+        scanf("%d",&s);
+        if(s == 0){
+
+            if(l == -1){
+                n[i]=0;
+            }
+
+            else{
+                n[l] = 0;
+                n[i] = 0;
+                l= l - 1;
+            }
+        }
+        else{
+                n[i]=0;
+                l=l+1;
+                n[l]=s;
+        }
+
+    }
+    for(int i=0; i<k;i++){
+        sum = sum + n[i];
+    }
     
     printf("%d\n", sum);
+    
 }
