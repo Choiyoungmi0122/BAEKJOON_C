@@ -18,7 +18,7 @@ int main(){
     
     for(int i=1; i<15; i++){      //층
       for(int j=1; j<15; j++){    //호
-        arr[i][j] = arr[i-1][j] + arr[i][j-1];
+          arr[i][j] = arr[i-1][j] + arr[i][j-1]; //층 인원수 구하는 식
       }
     }
     

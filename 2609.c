@@ -11,11 +11,12 @@ int main(){
     scanf("%d %d", &a, &b);
     
     min = a<b?a:b;
+    //최대공약수
     for(int i=1;i<=min;i++){
         if(a % i == 0 && b % i == 0)
             measure = i;
     }
-    
+    //최소공배수
     for(int i=min;i<=a*b;i++){
         if(i%a == 0 && i%b==0){
             drainage = i;
