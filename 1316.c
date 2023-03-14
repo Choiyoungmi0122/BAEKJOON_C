@@ -23,7 +23,7 @@ int main(){
             if (first != str[j]){
                 first = str[j];
                 if(al[str[j]-'a'] != 0){
-                    count--;
+                    count--;    //개수에서 제외
                     break;
                 }
                 else
