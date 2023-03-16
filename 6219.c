@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 int main(){
-    int A,B,D,count=0, a,b;
+    int A,B,D,count=0;
     int num[1000]={0,},result[1000]={0, };
     scanf("%d %d %d", &A, &B, &D);
     
@@ -28,22 +28,15 @@ int main(){
     
     for(int i=A;i<=B;i++){
         if(num[i]!=0){//소수인 경우에만 비교
-            if(i<10){
-                if(i == D)
-                    count++;
-            }
-            if(i>10){
-                a=i/10;
-                b=i%10;
-                if(a==D)
-                    count++;
-                if(b==D)
-                    count++;
-                
-            }
+            if(i/10==D)
+                count++;
+            if(i%10==D)
+                count++;
         }
     }
+
     printf("%d\n", count);
+    
     return 0;
     
 }
