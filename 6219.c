@@ -42,34 +42,25 @@
 //}
 
 int a,b,d;
-int PrimeNumber(int n)
+int PrimeNumber(int n)//소수판별 함수
 {
-    for(int i=2;i*i<=n;i++){
-        if(n%i==0) return 0;
+    for(int i=2;i*i<=n;i++){    //i의 제곱까지를 조건으로 받아서 제곱되는 수들은 다 제외
+        if(n%i==0) return 0;    //소수아니면 return 0
     }
-    return 1;
+    return 1;   //소수이면 1가 리턴됨
 }
-
-int f(int number)
-{
-    while(number>1){
-       if(number % 10 == d) return 1;
-       number=number/10;
-    }
-    return 0;
-}
-
 int main()
 {
     int result=0;
 
     scanf("%d %d %d", &a, &b, &d);
-
     for(int i=a;i<=b; i++){
-
-        if(f(i)){
-            result += PrimeNumber(i);
+        if(PrimeNumber(i) == 1){
+            if(i%10 == d || i/10 == d){
+                result++;
+                printf("%d\n", i);
+            }
         }
     }
-    printf("%d", result);
+    printf("%d\n", result);
 }
