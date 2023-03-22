@@ -4,40 +4,41 @@
 //
 //  Created by 최영미 on 3/22/23.
 //
-
+//문제조건 : 배열에 입력한 수에서 비교를 하는데, 해당 인덱스보다 오른쪽(더 큰인덱스)에서 값 비교를 하며, 그중 제일왼쪽 (제일 인덱스가 작은)에 있는 값을 출력
 #include <stdio.h>
 #include <stdlib.h>
-int stack[1000000];
-int idx = -1;
-void push(int value) {
+int stack[1000000];     //숫자를 넣을 배열 선언
+int idx = -1;           //0부터 넣어야하므로 -1로 선언해준다.
+void push(int value) {      //해당 값을 스택에 저장
     stack[++idx] = value;
 }
-int pop() {
+int pop() { //스택 맨위에 저장되어 잇는 값을 빼고 바로 밑의 값 리턴
     return stack[idx--];
 }
 int is_empty() {
-    return (idx == -1);
+    return (idx == -1);     //지금 현재 실행되고 있는 인덱스가 -1 즉, 스택이 비어있으면 0 리턴
 }
 int peek() {
-    return stack[idx];
+    return stack[idx];      //맨 위에 있는 값 리턴
 }
 main() {
     int n;
     scanf("%d", &n);
-    int* arr = (int*)malloc(sizeof(int) * n);
+    int* arr = (int*)malloc(sizeof(int) * n);       //구조체를 포인터로 선언해서 크기 바로 배정해줌
     for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+        scanf("%d", &arr[i]);       //포인터배열에 숫자 집어 넣음
     }
     for (int i = 0; i < n; i++) {
-        while (!is_empty() && arr[peek()] < arr[i]) {
-            arr[pop()] = arr[i];
+        while (!is_empty() && arr[peek()] < arr[i]) {   //비어있지않고, 맨위에 있는 값보다 내가 넣은 값이 크면 계속 반복해준다.
+            arr[pop()] = arr[i];        //스택의 맨위 값을 제거하고 리턴값이 제거한 인덱스의 -1되어있는 인덱스자리에 큰 값을 넣어준다.
         }
-        push(i);
+        push(i);        //이런 해당 인덱스값을 푸쉬해준다.
     }
-    while (!is_empty()) {
-        arr[pop()] = -1;
+    while (!is_empty()) {   //큰 수가 있다면 한개라도 있을텐데 비어있다는거 자체가 더 큰수가 없다는 뜻이기 때문에 해당 인덱스를 빼준다.
+        arr[pop()] = -1;    //비어있지 않은 수를 빼주면서 해당 값을 -1로 밀어준다.
     }
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
 }
+//처음 스택 비어있기 때문에 0(인덱스번호를) 푸쉬 맨위에 있는 0인덱스의 값보다 처음 입력하는 인덱스1의 값이더 크다면 원래 있던 값은 팝을 해주고, 해당 0번의 인덱스 번째에 값을 넣어준다. 인덱스는 계속 푸쉬해준다. (비교를 위해서) 그 다음 값이 만약 앞의 값보다 작다면 while 문 바로 나오게 되고 인덱스 값만 푸쉬를 해준다.
