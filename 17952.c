@@ -5,6 +5,8 @@
 //  Created by 최영미 on 3/22/23.
 //
 
+
+//stack 으로 
 #include <stdio.h>
 int main(){
     int n;
