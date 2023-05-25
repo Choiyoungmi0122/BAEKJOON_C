@@ -16,7 +16,7 @@ int main(){
       arr[0][i] = i;  //0층 i호 밀어주기
     
     
-    forㄷ(int i=1; i<15; i++){      //층
+    for(int i=1; i<15; i++){      //층
       for(int j=1; j<15; j++){    //호
           arr[i][j] = arr[i-1][j] + arr[i][j-1]; //층 인원수 구하는 식
       }
